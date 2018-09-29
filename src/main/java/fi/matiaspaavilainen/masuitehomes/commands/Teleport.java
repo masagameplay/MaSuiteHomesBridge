@@ -15,16 +15,17 @@ public class Teleport implements CommandExecutor {
     public Teleport(MaSuiteHomes p) {
         plugin = p;
     }
+
     @Override
     public boolean onCommand(CommandSender cs, Command cmd, String s, String[] args) {
         if (!(cs instanceof Player)) {
             return false;
         }
         Player p = (Player) cs;
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
         switch (args.length) {
             case (0):
-                if(checkCooldown(p)){
-                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                if (checkCooldown(p)) {
                     out.writeUTF("HomeCommand");
                     out.writeUTF(p.getName());
                     out.writeUTF("home");
@@ -32,8 +33,7 @@ public class Teleport implements CommandExecutor {
                 }
                 break;
             case (1):
-                if(checkCooldown(p)){
-                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                if (checkCooldown(p)) {
                     out.writeUTF("HomeCommand");
                     out.writeUTF(p.getName());
                     out.writeUTF(args[0]);

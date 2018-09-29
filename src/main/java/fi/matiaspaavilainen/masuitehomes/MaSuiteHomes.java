@@ -22,10 +22,10 @@ public class MaSuiteHomes extends JavaPlugin {
         saveDefaultConfig();
         config.createConfigs();
 
-        getCommand("sethome").setExecutor(new Set());
-        getCommand("delhome").setExecutor(new Delete());
+        getCommand("sethome").setExecutor(new Set(this));
+        getCommand("delhome").setExecutor(new Delete(this));
         getCommand("home").setExecutor(new Teleport(this));
-        getCommand("homes").setExecutor(new List());
+        getCommand("homes").setExecutor(new List(this));
     }
 
     public String colorize(String msg){
