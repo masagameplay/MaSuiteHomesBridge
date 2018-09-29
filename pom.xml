@@ -6,7 +6,7 @@
 
     <groupId>fi.matiaspaavilainen</groupId>
     <artifactId>MaSuiteHomesBridge</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <build>
         <defaultGoal>clean package install</defaultGoal>
         <plugins>
@@ -23,7 +23,10 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
+                    <include>config.yml</include>
                     <include>plugin.yml</include>
+                    <include>messages.yml</include>
+                    <include>syntax.yml</include>
                 </includes>
             </resource>
         </resources>

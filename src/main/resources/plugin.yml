@@ -1,4 +1,13 @@
 name: MaSuiteHomeBridge
 main: fi.matiaspaavilainen.masuitehomes.MaSuiteHomes
-version: 1.1
+version: 1.2
 author: Masagameplay
+commands:
+  sethome:
+    description: Sets home point
+  delhome:
+    description: Deletes home point
+  home:
+    description: Teleports to home point
+  homes:
+    description: Lists all available homes
