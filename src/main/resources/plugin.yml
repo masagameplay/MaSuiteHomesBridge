@@ -5,9 +5,12 @@ author: Masagameplay
 commands:
   sethome:
     description: Sets home point
+    aliases: [createhome, homeset]
   delhome:
     description: Deletes home point
+    aliases: [deletehome, homedel]
   home:
     description: Teleports to home point
   homes:
     description: Lists all available homes
+    aliases: [homelist, listhomes]
