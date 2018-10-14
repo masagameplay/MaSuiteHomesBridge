@@ -1,6 +1,6 @@
 name: MaSuiteHomeBridge
 main: fi.matiaspaavilainen.masuitehomes.MaSuiteHomes
-version: 1.2
+version: 1.2.2
 author: Masagameplay
 commands:
   sethome:
