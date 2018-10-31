@@ -25,6 +25,10 @@ public class HomeMessageListener implements PluginMessageListener {
                 Player p = Bukkit.getPlayer(UUID.fromString(in.readUTF()));
                 p.teleport(new Location(Bukkit.getWorld(in.readUTF()), in.readDouble(), in.readDouble(), in.readDouble(), in.readFloat(), in.readFloat()));
             }
+            if(subchannel.equals("HomeCooldown")){
+                Player p = Bukkit.getPlayer(UUID.fromString(in.readUTF()));
+                MaSuiteHomes.cooldowns.put(p.getUniqueId(), in.readLong());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
