@@ -1,6 +1,6 @@
 name: MaSuiteHomesBridge
 main: fi.matiaspaavilainen.masuitehomes.MaSuiteHomes
-version: 1.2.4
+version: 1.2.4.1
 author: Masagameplay
 commands:
   sethome:
@@ -13,7 +13,7 @@ commands:
     permission: masuitehomes.home.delete
   home:
     description: Teleports to home point
-    permission: masuitehomes.home.list
+    permission: masuitehomes.home.teleport
   homes:
     description: Lists all available homes
     aliases: [homelist, listhomes]
