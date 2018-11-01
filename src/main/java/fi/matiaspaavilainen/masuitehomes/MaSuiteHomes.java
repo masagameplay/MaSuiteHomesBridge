@@ -5,14 +5,17 @@ import fi.matiaspaavilainen.masuitehomes.commands.List;
 import fi.matiaspaavilainen.masuitehomes.commands.Set;
 import fi.matiaspaavilainen.masuitehomes.commands.Teleport;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class MaSuiteHomes extends JavaPlugin {
     public static HashMap<UUID, Long> cooldowns = new HashMap<>();
     public Config config = new Config(this);
+	public final java.util.List<CommandSender> in_command = new ArrayList<>();
 
     @Override
     public void onEnable() {
