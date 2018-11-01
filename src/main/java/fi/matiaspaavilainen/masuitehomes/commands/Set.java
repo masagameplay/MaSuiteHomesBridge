@@ -26,12 +26,20 @@ public class Set implements CommandExecutor {
         Player p = (Player) cs;
         Location loc = p.getLocation();
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        int max = 0;
+        for (int i = 100; 0 < i; i++) {
+            if (p.hasPermission("masuitehomes.home.limit." + i) || p.hasPermission("masuitehomes.home.limit.unlimited")) {
+                max = i - 1;
+                break;
+            }
+        }
         switch (args.length) {
             case (0):
                 out.writeUTF("SetHomeCommand");
                 out.writeUTF(p.getName());
                 out.writeUTF(loc.getWorld().getName() + ":" + loc.getX() + ":" + loc.getY() + ":" + loc.getZ() + ":" + loc.getYaw() + ":" + loc.getPitch());
                 out.writeUTF("home");
+                out.writeInt(max);
                 p.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
                 break;
             case (1):
@@ -39,6 +47,7 @@ public class Set implements CommandExecutor {
                 out.writeUTF(p.getName());
                 out.writeUTF(loc.getWorld().getName() + ":" + loc.getX() + ":" + loc.getY() + ":" + loc.getZ() + ":" + loc.getYaw() + ":" + loc.getPitch());
                 out.writeUTF(args[0]);
+                out.writeInt(max);
                 p.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
                 break;
             default:
