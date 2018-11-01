@@ -8,6 +8,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 
 public class Set implements CommandExecutor {
 
@@ -27,10 +29,19 @@ public class Set implements CommandExecutor {
         Location loc = p.getLocation();
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         int max = 0;
-        for (int i = 100; 0 < i; i++) {
-            if (p.hasPermission("masuitehomes.home.limit." + i) || p.hasPermission("masuitehomes.home.limit.unlimited")) {
-                max = i - 1;
-                break;
+        for(PermissionAttachmentInfo permInfo : p.getEffectivePermissions()){
+            String perm = permInfo.getPermission();
+            if(perm.startsWith("masuitehomes.home.limit.")){
+                String amount = perm.replace("masuitehomes.home.limit.", "");
+                if(amount.equalsIgnoreCase("*")){
+                    max = -1;
+                    break;
+                }
+                try {
+                    max = Integer.parseInt(amount);
+                } catch (NumberFormatException ex) {
+                    System.out.println("[MaSuite] [Homes] Please check your home limit permissions (Not a integer or *) ");
+                }
             }
         }
         switch (args.length) {
