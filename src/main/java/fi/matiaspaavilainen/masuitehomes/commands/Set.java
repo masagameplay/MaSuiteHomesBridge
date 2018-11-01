@@ -40,7 +40,7 @@ public class Set implements CommandExecutor {
                 try {
                     max = Integer.parseInt(amount);
                 } catch (NumberFormatException ex) {
-                    System.out.println("[MaSuite] [Homes] Please check your home limit permissions (Not a integer or *) ");
+                    System.out.println("[MaSuite] [Homes] Please check your home limit permissions (Not an integer or *) ");
                 }
             }
         }
