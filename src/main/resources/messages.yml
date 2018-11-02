@@ -1,1 +1,2 @@
 in-cooldown: "&cYou can go to home after %time% seconds"
+on_active_command: "You have already a command in progress, try it again in few seconds"
