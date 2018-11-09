@@ -28,7 +28,7 @@ public class Delete implements CommandExecutor {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
 
             if (plugin.in_command.contains(cs)) { // this function is not really necessary, but safety first
-                cs.sendMessage(plugin.colorize(plugin.config.getMessages().getString("on_active_command")));
+                cs.sendMessage(plugin.colorize(plugin.config.getMessages().getString("on-active-command")));
                 return;
             }
 
