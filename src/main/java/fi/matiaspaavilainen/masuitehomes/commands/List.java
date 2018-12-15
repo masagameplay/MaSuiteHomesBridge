@@ -43,6 +43,16 @@ public class List implements CommandExecutor {
                     out.writeUTF("ListHomeCommand");
                     out.writeUTF(p.getName());
                     p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
+                } else if (args.length == 1) {
+                    if (p.hasPermission("masuitehomes.home.list.other")) {
+                        out.writeUTF("ListHomeOtherCommand");
+                        out.writeUTF(p.getName());
+                        out.writeUTF(args[0]);
+                        p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
+                    } else {
+                        p.sendMessage(plugin.colorize(plugin.config.getMessages().getString("no-permission")));
+                    }
+
                 } else {
                     p.sendMessage(plugin.colorize(plugin.config.getSyntaxes().getString("home.list")));
                 }

@@ -50,6 +50,17 @@ public class Delete implements CommandExecutor {
                         out.writeUTF(args[0]);
                         p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
                         break;
+                    case (2):
+                        if (p.hasPermission("masuitehomes.home.delete.other")) {
+                            out.writeUTF("DelHomeOtherCommand");
+                            out.writeUTF(p.getName());
+                            out.writeUTF(args[0]);
+                            out.writeUTF(args[1]);
+                            p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
+                        } else {
+                            p.sendMessage(plugin.colorize(plugin.config.getMessages().getString("no-permission")));
+                        }
+                        break;
                     default:
                         p.sendMessage(plugin.colorize(plugin.config.getSyntaxes().getString("home.delete")));
                         break;

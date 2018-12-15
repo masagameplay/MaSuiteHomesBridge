@@ -58,6 +58,18 @@ public class Teleport implements CommandExecutor {
                             p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
                         }
                         break;
+                    case (2):
+                        if (p.hasPermission("masuitehomes.home.teleport.other")) {
+                            sendLastLoc(p);
+                            out.writeUTF("HomeOtherCommand");
+                            out.writeUTF(p.getName());
+                            out.writeUTF(args[0]);
+                            out.writeUTF(args[1]);
+                            p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
+                        } else {
+                            p.sendMessage(plugin.colorize(plugin.config.getMessages().getString("no-permission")));
+                        }
+                        break;
                     default:
                         p.sendMessage(plugin.colorize(plugin.config.getSyntaxes().getString("home.teleport")));
                         break;
@@ -75,8 +87,7 @@ public class Teleport implements CommandExecutor {
     private Boolean checkCooldown(Player p) {
         if (plugin.getConfig().getInt("cooldown") > 0) {
             if (MaSuiteHomes.cooldowns.containsKey(p.getUniqueId())) {
-                if (System.currentTimeMillis()
-                        - MaSuiteHomes.cooldowns.get(p.getUniqueId()) > plugin.getConfig().getInt("cooldown") * 1000) {
+                if (System.currentTimeMillis() - MaSuiteHomes.cooldowns.get(p.getUniqueId()) > plugin.getConfig().getInt("cooldown") * 1000) {
                     MaSuiteHomes.cooldowns.remove(p.getUniqueId());
                     return true;
                 } else {

@@ -75,6 +75,18 @@ public class Set implements CommandExecutor {
                         out.writeInt(max);
                         p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
                         break;
+                    case (2):
+                        if (p.hasPermission("masuitehomes.home.set.other")) {
+                            out.writeUTF("SetHomeOtherCommand");
+                            out.writeUTF(p.getName());
+                            out.writeUTF(loc.getWorld().getName() + ":" + loc.getX() + ":" + loc.getY() + ":" + loc.getZ() + ":" + loc.getYaw() + ":" + loc.getPitch());
+                            out.writeUTF(args[0]);
+                            out.write(-1);
+                            p.sendPluginMessage(plugin, "BungeeCord", b.toByteArray());
+                        } else {
+                            p.sendMessage(plugin.colorize(plugin.config.getMessages().getString("no-permission")));
+                        }
+                        break;
                     default:
                         p.sendMessage(plugin.colorize(plugin.config.getSyntaxes().getString("home.set")));
                         break;

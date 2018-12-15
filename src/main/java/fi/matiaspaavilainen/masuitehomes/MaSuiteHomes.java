@@ -25,6 +25,7 @@ public class MaSuiteHomes extends JavaPlugin {
         saveDefaultConfig();
         config.createConfigs();
 
+        config.getMessages().addDefault("no-permission", "&cNo permission");
         getCommand("sethome").setExecutor(new Set(this));
         getCommand("delhome").setExecutor(new Delete(this));
         getCommand("home").setExecutor(new Teleport(this));
